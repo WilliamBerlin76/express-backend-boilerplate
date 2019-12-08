@@ -22,4 +22,27 @@ router.post('/register', (req, res) => {
     })
 });
 
+
+// LOGIN FOR EXISTING USER
+router.post('/login', (req, res) => {
+    let {username, password} = req.body;
+
+    Users.findBy({ username })
+        .first()
+        .then(async user => {
+            if( user && bcrypt.compareSync(password, user.password)) {
+                const returnedUser = await Users.getById(user.id);
+                const token = generateToken(user);
+
+                res.status(200).json({ message: "You are logged in", user: returnedUser, token})
+            } else {
+                res.status(401).json({ message: 'The provided credentials are invalid' })
+            }
+        })
+        .catch(err => {
+            console.log('LOGIN ERROR', err);
+            res.status(500).json(err);
+        });
+})
+
 module.exports = router;
