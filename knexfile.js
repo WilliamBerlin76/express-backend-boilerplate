@@ -15,6 +15,22 @@ module.exports = {
       directory: "./database/seeds"
     }
   },
+  // development: {
+  //   client: 'pg',
+  //   connection: {
+  //     host: "localhost",
+  //     database: process.env.DB_ENV_DATABASE,
+  //     user: process.env.DB_USER,
+  //     password: process.env.DB_PASSWORD
+  //   },
+  //   useNullAsDefault: true,
+  //   migrations: {
+  //     directory: "./database/migrations"
+  //   },
+  //   seeds: {
+  //     directory: "./database/seeds"
+  //   }
+  // },
 
   production: {
     client: 'pg',

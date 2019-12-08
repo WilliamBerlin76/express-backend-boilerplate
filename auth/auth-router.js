@@ -45,4 +45,12 @@ router.post('/login', (req, res) => {
         });
 });
 
+router.get('/users', (req, res) => {
+    Users.get()
+        .then(users => {
+            res.status(200).json(users)
+        })
+        
+})
+
 module.exports = router;
