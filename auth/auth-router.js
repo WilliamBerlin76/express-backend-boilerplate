@@ -43,6 +43,6 @@ router.post('/login', (req, res) => {
             console.log('LOGIN ERROR', err);
             res.status(500).json(err);
         });
-})
+});
 
 module.exports = router;
