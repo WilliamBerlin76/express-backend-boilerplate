@@ -41,16 +41,20 @@ router.post('/login', (req, res) => {
         })
         .catch(err => {
             console.log('LOGIN ERROR', err);
-            res.status(500).json(err);
+            res.status(500).json({error: 'the server could not log you in'});
         });
 });
 
+// GET ALL USERS
 router.get('/users', (req, res) => {
     Users.get()
         .then(users => {
             res.status(200).json(users)
         })
-        
+        .catch(err => {
+            console.log('GETTING USERS', err);
+            res.status(500).json({ error: 'there was an error retrieving the users from the database'})
+        })
 })
 
 module.exports = router;
